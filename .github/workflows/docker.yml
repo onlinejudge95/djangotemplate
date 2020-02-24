@@ -1,11 +1,6 @@
 name: "Docker-Pipeline"
 
-on:
-   push:
-     branches:
-      - "*"
-     tags:
-       - "v*"
+on: [push]
 
 jobs:
   build:
