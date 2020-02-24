@@ -16,12 +16,16 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: "Build image"
+      - name: "Build dev image"
         if: success()
-        run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
+        run: docker build -t ${GITHUB_REPOSITORY}:dev --file dev.Dockerfile .
+
+      - name: "Build prod image"
+        if: success()
+        run: docker build -t ${GITHUB_REPOSITORY}:latest --file prod.Dockerfile .
 
       - name: "Push to docker registry"
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push ${GITHUB_REPOSITORY}:${IMAGE_TAG}
+          args: push ${GITHUB_REPOSITORY}:latest
