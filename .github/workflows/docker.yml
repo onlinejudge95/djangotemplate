@@ -3,7 +3,7 @@ name: "Docker-Pipeline"
 on:
    push:
      branches:
-      - "master"
+      - "*"
      tags:
        - "v*"
 
