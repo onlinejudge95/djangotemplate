@@ -1,0 +1,13 @@
+__pycache__/
+.git/
+.github/
+env/
+
+bin/black.sh
+.gitignore
+dev.Dockerfile
+LICENSE
+prod.Dockerfile
+pyproject.toml
+README.md
+requirements.txt

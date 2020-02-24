@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  app:
+    container_name: app
+    entrypoint: ["/usr/src/app/bin/entrypoint.sh"]
+    ports:
+      - 8000:8000
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app
+    build:
+      context: .
+      dockerfile: dev.Dockerfile

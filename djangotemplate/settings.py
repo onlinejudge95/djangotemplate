@@ -11,6 +11,22 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import re
+import uuid
+
+
+def generate_db_profile(connection_string, db_profile):
+    match = re.match("postgresql://(.*?):(.*?)@(.*?):(.*?)/(.*)", connection_string)
+    user, password, host, port, database = match.groups()
+
+    db_profile["HOST"] = host
+    db_profile["PORT"] = port
+    db_profile["USER"] = user
+    db_profile["PASSWORD"] = password
+    db_profile["NAME"] = database
+
+    return db_profile
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +36,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "=$1v%zio08*n_(dc%bhgnkir5e7!9rysx^-jslzw+8mr70&s23"
+SECRET_KEY = uuid.uuid4().hex
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
@@ -72,15 +88,12 @@ WSGI_APPLICATION = "djangotemplate.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
