@@ -1,14 +1,14 @@
 #!/bin/sh
+echo "Performing migrations..."
+
+python manage.py makemigrations
+python manage.py migrate
+
+echo "Migrations done..."
 
 
-echo "Waiting for postgres..."
+echo "Starting server..."
 
-while ! nc -z postgre 5432; do
-  sleep 0.1
-done
+python manage.py runserver 0.0.0.0:8000
 
-echo "PostgreSQL started"
-
-echo "Starting server"
-
-python manage.py run -h 0.0.0.0
+echo "Server shut down..."
