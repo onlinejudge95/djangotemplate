@@ -13,3 +13,6 @@ djangotemplate
 ![GitHub last commit](https://img.shields.io/github/last-commit/onlinejudge95/djangotemplate)
 ![GitHub repo size](https://img.shields.io/github/repo-size/onlinejudge95/djangotemplate)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/onlinejudge95/djangotemplate)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/onlinejudge95/djangotemplate)
+![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/g/onlinejudge95/djangotemplate)
+[![Beerpay](https://beerpay.io/onlinejudge95/djangotemplate/badge.svg)](https://beerpay.io/onlinejudge95/djangotemplate)
