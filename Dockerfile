@@ -11,6 +11,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /usr/src/app
 
 COPY . .
+RUN pip install --requirement requirements/prod.txt
 
-RUN pip install -r requirements/prod.txt
-RUN chmod +x bin/entrypoint.sh
+RUN adduser -D webuser
+USER webuser
